@@ -1,8 +1,8 @@
 import pytest
 from selenium import webdriver
 import requests
-import helpers
-import urls
+from helpers import Helpers
+from urls import Urls
 
 
 @pytest.fixture()
@@ -14,13 +14,13 @@ def driver():
 
 @pytest.fixture(scope='session', autouse=True)
 def create_user_on_backend():
-    helpers.preset_email = helpers.generate_email()
-    helpers.preset_password = helpers.generate_password()
+    Helpers.preset_email = Helpers.generate_email()
+    Helpers.preset_password = Helpers.generate_password()
 
     payload = {
         "name": "Viky",
-        "email": helpers.preset_email,
-        "password": helpers.preset_password
+        "email": Helpers.preset_email,
+        "password": Helpers.preset_password
     }
-    response = requests.post(url=urls.register_api, json=payload)
+    response = requests.post(url=Urls.register_api, json=payload)
     assert response.status_code == 200

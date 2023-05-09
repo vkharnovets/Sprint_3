@@ -1,5 +1,13 @@
 Финальное задание 3 спринта
 
+-> conftest.py - fixtures
+
+-> helpers.py - вспомогательные функции и переменные, используемые в нескольких файлах
+
+-> locators.py - локаторы
+
+-> urls.py - url'ы используемых страниц проекта
+
 -> tests:
 		-> TestConstructor.py - тесты на конструктор бургеров:
 			- test_constructor_page_shown_from_profile_using_profile_button - проверка перехода в конструктор из профиля по кнопке
@@ -22,13 +30,3 @@
 		-> TestRegistration.py - тесты на регистрацию нового пользлвателя
 			- test_successful_registration - проверка на успешную регистрацию, если данные корректны
 			- test_failed_registration_wrong_password - проверка появления ошибки при слишком коротком пароле
-			
-		-> conftest.py - fixtures
-		
-		-> helpers.py - вспомогательные функции и переменные, используемые в нескольких файлах
-		
-		-> locators.py - локаторы
-		
-		-> urls.py - url'ы используемыъ страниц проекта
-		
-			
