@@ -4,7 +4,7 @@ class Locators:
     reg_form_email_input = './/label[text()=\'Email\']/following-sibling::input' #Окно для ввода email
     reg_form_password_input = './/input[@type=\'password\' and @name=\'Пароль\']' #Окно для ввода пароля
     reg_form_confirm_button = './/button[text()=\'Зарегистрироваться\']' #Кнопка отсылки данных
-    reg_form_wrong_password_label = './/form/fieldset[3]/div/p[text()=\'Некорректный пароль\']' #Текст ошибки о пароле, не соответствующем правилам
+    reg_form_wrong_password_label = './/p[text()=\'Некорректный пароль\']' #Текст ошибки о пароле, не соответствующем правилам
     reg_form_login_link = './/a[text()=\'Войти\']' #Ссылка на страницу логина
 
     # Login form
@@ -17,13 +17,13 @@ class Locators:
     main_page_profile_button = './/p[text()=\'Личный Кабинет\']' #Кнопка перехода в профиль
     main_page_create_order_button = './/button[text()=\'Оформить заказ\']' #Кнопка оформления заказа
 
-    main_page_buns_control = './/div[1]/span[text()=\'Булки\']' #Ссылка для навигации на группу ингридиентов "Булки"
-    main_page_sauces_control = './/div[2]/span[text()=\'Соусы\']' #Ссылка для навигации на группу ингридиентов "Соусы"
-    main_page_fillings_control = './/div[3]/span[text()=\'Начинки\']' #Ссылка для навигации на группу ингридиентов "Начинки"
+    main_page_buns_control = './/span[text()=\'Булки\']' #Ссылка для навигации на группу ингридиентов "Булки"
+    main_page_sauces_control = './/span[text()=\'Соусы\']' #Ссылка для навигации на группу ингридиентов "Соусы"
+    main_page_fillings_control = './/span[text()=\'Начинки\']' #Ссылка для навигации на группу ингридиентов "Начинки"
 
-    main_page_buns_label = './/main/section[1]/div[2]/h2[text()=\'Булки\']' #Заголовок группы ингридиентов "Булки"
-    main_page_sauces_label = './/main/section[1]/div[2]/h2[text()=\'Соусы\']' #Заголовок группы ингридиентов "Соусы"
-    main_page_fillings_label = './/main/section[1]/div[2]/h2[text()=\'Начинки\']' #Заголовок группы ингридиентов "Начинки"
+    main_page_buns_label = './/h2[text()=\'Булки\']' #Заголовок группы ингридиентов "Булки"
+    main_page_sauces_label = './/h2[text()=\'Соусы\']' #Заголовок группы ингридиентов "Соусы"
+    main_page_fillings_label = './/h2[text()=\'Начинки\']' #Заголовок группы ингридиентов "Начинки"
 
     # Profile page
     profile_page_constructor_button = './/p[text()=\'Конструктор\']' #Кнопка перехода в конструктор
