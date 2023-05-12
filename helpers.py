@@ -8,10 +8,8 @@ from locators import Locators
 
 class Helpers:
     preset_name = 'Viky'
-    preset_email = ''  # should be generated once per session inside create_user_on_backend fixture
-    preset_password = ''  # should be generated once per session inside create_user_on_backend fixture
-
-    color_of_selected_ingredients_group = 'rgba(255, 255, 255, 1)'
+    preset_email = ''
+    preset_password = ''
 
     @staticmethod
     def generate_email():
@@ -28,11 +26,32 @@ class Helpers:
         return fake.password(length=14, special_chars=True, digits=True, upper_case=True, lower_case=True)
 
     @staticmethod
+    def register(driver):
+        driver.get(Urls.register_form)
+
+        email = Helpers.generate_email()
+        password = Helpers.generate_password()
+
+        driver.find_element(*Locators.reg_form_name_input).send_keys(Helpers.preset_name)
+        driver.find_element(*Locators.reg_form_email_input).send_keys(email)
+        driver.find_element(*Locators.reg_form_password_input).send_keys(password)
+        driver.find_element(*Locators.reg_form_confirm_button).click()
+
+        WebDriverWait(driver, 5).until(expected_conditions.url_changes(Urls.register_form))
+
+        Helpers.preset_email = email
+        Helpers.preset_password = password
+
+    @staticmethod
     def login(driver):
+        if not Helpers.preset_email:
+            Helpers.register(driver)
+
         driver.get(Urls.login_form)
 
-        driver.find_element(By.XPATH, Locators.login_form_email_input).send_keys(Helpers.preset_email)
-        driver.find_element(By.XPATH, Locators.login_form_password_input).send_keys(Helpers.preset_password)
-        driver.find_element(By.XPATH, Locators.login_form_login_button).click()
+        driver.find_element(*Locators.login_form_email_input).send_keys(Helpers.preset_email)
+        driver.find_element(*Locators.login_form_password_input).send_keys(Helpers.preset_password)
+        driver.find_element(*Locators.login_form_login_button).click()
 
         WebDriverWait(driver, 5).until(expected_conditions.url_changes(Urls.login_form))
+
