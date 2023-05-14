@@ -3,7 +3,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 from urls import Urls
 from locators import Locators
 from helpers import Helpers
-
+from test_registration import TestRegistration
 
 class TestLogin:
     def test_login_page_shown_by_login_button(self, driver):
@@ -34,9 +34,18 @@ class TestLogin:
         WebDriverWait(driver, 5).until(expected_conditions.url_changes(Urls.main_page))
         assert driver.current_url == Urls.login_form
 
-    def test_successful_login(self, driver):
-        Helpers.login(driver)
-        assert driver.current_url == Urls.main_page
+    @staticmethod
+    def test_successful_login(driver):
+        if not Helpers.preset_email:
+            TestRegistration.test_successful_registration(driver)
 
-        # ensure "create order" button is shown on the page
-        assert len(driver.find_elements(*Locators.main_page_create_order_button)) == 1
+        driver.get(Urls.login_form)
+
+        driver.find_element(*Locators.login_form_email_input).send_keys(Helpers.preset_email)
+        driver.find_element(*Locators.login_form_password_input).send_keys(Helpers.preset_password)
+        driver.find_element(*Locators.login_form_login_button).click()
+
+        WebDriverWait(driver, 5).until(expected_conditions.url_changes(Urls.login_form))
+        # ensure we're on main page and "create order" button is shown on the page
+        assert driver.current_url == Urls.main_page and driver.find_element(*Locators.main_page_create_order_button) is not None
+

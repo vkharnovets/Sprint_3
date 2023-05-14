@@ -19,9 +19,9 @@ class Locators:
     main_page_profile_button = By.XPATH, './/p[text()=\'Личный Кабинет\']' #Кнопка перехода в профиль
     main_page_create_order_button = By.XPATH, './/button[text()=\'Оформить заказ\']' #Кнопка оформления заказа
 
-    main_page_buns_control = By.XPATH, './/span[text()=\'Булки\']/parent::div' #Ссылка для навигации на группу ингридиентов "Булки"
-    main_page_sauces_control = By.XPATH, './/span[text()=\'Соусы\']/parent::div' #Ссылка для навигации на группу ингридиентов "Соусы"
-    main_page_fillings_control = By.XPATH, './/span[text()=\'Начинки\']/parent::div' #Ссылка для навигации на группу ингридиентов "Начинки"
+    main_page_buns_control_active = By.XPATH, './/span[text()=\'Булки\']/parent::div[contains(@class, \'current\')]' #Ссылка для навигации на группу ингридиентов "Булки" когда раздел активен
+    main_page_sauces_control_active = By.XPATH, './/span[text()=\'Соусы\']/parent::div[contains(@class, \'current\')]' #Ссылка для навигации на группу ингридиентов "Соусы" когда раздел активен
+    main_page_fillings_control_active = By.XPATH, './/span[text()=\'Начинки\']/parent::div[contains(@class, \'current\')]' #Ссылка для навигации на группу ингридиентов "Начинки" когда раздел активен
 
     main_page_buns_label = By.XPATH, './/h2[text()=\'Булки\']' #Заголовок группы ингридиентов "Булки"
     main_page_sauces_label = By.XPATH, './/h2[text()=\'Соусы\']' #Заголовок группы ингридиентов "Соусы"

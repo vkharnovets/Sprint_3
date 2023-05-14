@@ -2,19 +2,18 @@ from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
 from urls import Urls
 from locators import Locators
-from helpers import Helpers
-
+from test_login import TestLogin
 
 class TestProfile:
     def test_profile_page_shown_by_profile_button(self, driver):
-        Helpers.login(driver)
+        TestLogin.test_successful_login(driver)
 
         driver.find_element(*Locators.main_page_profile_button).click()
         WebDriverWait(driver, 5).until(expected_conditions.url_to_be(Urls.profile_page))
         assert driver.current_url == Urls.profile_page
 
     def test_logout_by_profile_logout_button(self, driver):
-        Helpers.login(driver)
+        TestLogin.test_successful_login(driver)
 
         driver.find_element(*Locators.main_page_profile_button).click()
         WebDriverWait(driver, 5).until(expected_conditions.url_to_be(Urls.profile_page))
