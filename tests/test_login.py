@@ -1,10 +1,12 @@
+import pytest
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
 from urls import Urls
 from locators import Locators
 from helpers import Helpers
-from test_registration import TestRegistration
 
+
+@pytest.mark.usefixtures("registerUser")
 class TestLogin:
     def test_login_page_shown_by_login_button(self, driver):
         driver.get(Urls.main_page)
@@ -36,9 +38,6 @@ class TestLogin:
 
     @staticmethod
     def test_successful_login(driver):
-        if not Helpers.preset_email:
-            TestRegistration.test_successful_registration(driver)
-
         driver.get(Urls.login_form)
 
         driver.find_element(*Locators.login_form_email_input).send_keys(Helpers.preset_email)

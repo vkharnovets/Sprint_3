@@ -4,9 +4,9 @@ from urls import Urls
 from locators import Locators
 from helpers import Helpers
 
+
 class TestRegistration:
-    @staticmethod
-    def test_successful_registration(driver):
+    def test_successful_registration(self, driver):
         driver.get(Urls.register_form)
 
         Helpers.preset_email = Helpers.generate_email()
